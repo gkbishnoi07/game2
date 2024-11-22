@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Word Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <style> 
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #333;
+    background-image: url('game.png'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+}
+
+.game-container {
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+input {
+    font-size: 18px;
+    padding: 10px;
+    width: 50px;
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #ff0000;
+}
+
+button:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+
+#msg {
+    font-weight: bold;
+    color: #333;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>Guess</h1>
+        <p>Guess the word by entering one letter at a time</p>
+
+    
+
+        <p id="word-display">_ _ _ _</p>
+        <input type="text" id="letter-input" maxlength="1" placeholder="Enter">
+        <button id="submit">Submit Guess</button>
+        <p>Attempts Left: <span id="attempts">10</span></p>
+        <p id="hint">Hint: </p>
+        <p id="msg"></p>
+        <button id="play-again" style="display:none;">Play Again</button>
+    </div>
+
+    <script src="logic.js"></script>
+</body>
+</html>
