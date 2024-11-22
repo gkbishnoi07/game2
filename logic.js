@@ -14,21 +14,21 @@ let messageDisplay = document.getElementById('msg');
 let playAgainButton = document.getElementById('play-again');
 
 function startGame() {
-    selectedWord = words[Math.floor(Math.random() * words.length)]; // Choose a random word
-    guessedWord = Array(selectedWord.length).fill('_'); // Initialize guessedWord with underscores
-    attemptsLeft = 10; // Reset attempts
+    selectedWord = words[Math.floor(Math.random() * words.length)]; 
+    guessedWord = Array(selectedWord.length).fill('_'); 
+    attemptsLeft = 10; 
     attemptsDisplay.textContent = attemptsLeft;
-    wordDisplay.textContent = guessedWord.join(' '); // Display the word with blanks
-    hintDisplay.textContent = 'Hint: ' + selectedWord[0]; // Reveal first letter as a hint
+    wordDisplay.textContent = guessedWord.join(' '); 
+    hintDisplay.textContent = 'Hint: ' + selectedWord[0]; 
     messageDisplay.textContent = '';
-    playAgainButton.style.display = 'none'; // Hide "Play Again" button
-    letterInput.value = ''; // Clear input
-    letterInput.focus(); // Focus on input field
+    playAgainButton.style.display = 'none'; 
+    letterInput.value = ''; 
+    letterInput.focus(); 
 }
 
 function checkGuess() {
     let guessedLetter = letterInput.value.toLowerCase();
-    letterInput.value = ''; // Clear input field
+    letterInput.value = ''; 
     if (guessedLetter.length !== 1 || !/[a-z]/.test(guessedLetter)) {
         messageDisplay.textContent = 'Please enter a valid letter.';
         return;
@@ -37,7 +37,7 @@ function checkGuess() {
     let correctGuess = false;
     for (let i = 0; i < selectedWord.length; i++) {
         if (selectedWord[i] === guessedLetter) {
-            guessedWord[i] = guessedLetter; // Fill in the correct letter
+            guessedWord[i] = guessedLetter; 
             correctGuess = true;
         }
     }
@@ -47,13 +47,13 @@ function checkGuess() {
         attemptsDisplay.textContent = attemptsLeft;
     }
 
-    wordDisplay.textContent = guessedWord.join(' '); // Update word display
+    wordDisplay.textContent = guessedWord.join(' '); 
     if (guessedWord.join('') === selectedWord) {
         messageDisplay.textContent = 'Congratulations! You guessed the word!';
-        playAgainButton.style.display = 'block'; // Show "Play Again" button
+        playAgainButton.style.display = 'block'; 
     } else if (attemptsLeft === 0) {
         messageDisplay.textContent = 'Game Over! The word was: ' + selectedWord;
-        playAgainButton.style.display = 'block'; // Show "Play Again" button
+        playAgainButton.style.display = 'block'; 
     }
 }
 
@@ -64,5 +64,4 @@ function restartGame() {
 submitButton.addEventListener('click', checkGuess);
 playAgainButton.addEventListener('click', restartGame);
 
-// Start the game when the page loads
 startGame();
